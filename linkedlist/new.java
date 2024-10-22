@@ -61,6 +61,20 @@ class List {
             head = x;
         }
     } // end of InsertStart
+//counter; 
+
+// Counter method to count the number of nodes in the list
+public int counter() {
+    int count = 0;
+    Node tmp = head;
+    
+    while (tmp != null) {
+        count++;       // Increment count for each node
+        tmp = tmp.next; // Move to the next node
+    }
+    
+    return count; // Return the total count
+}
 
     // Display the list
     public void Display() {
@@ -131,7 +145,7 @@ class List {
 } // end of List class
 
 // 3. Interface class SLL
-public class SLL2 {
+public class SLL {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         List s = new List();
@@ -154,7 +168,7 @@ public class SLL2 {
                     s.InsertTail(scan.nextInt());
                     break;
                 case 2:
-                    System.out.println("Size: " + s.getSize() + "\n");
+                    System.out.println("Size: " + s.counter() + "\n");
                     break;
                 case 3:
                     System.out.print("SLL contains: ");
@@ -178,6 +192,7 @@ public class SLL2 {
 
             System.out.print("Do you want to continue? (Type: Y or N) ");
             ch = scan.next().charAt(0);
-        } while (ch == 'y' || ch == 'Y'); // end of do while
+        } while (ch != 'n' && ch != 'N'); // end of do while
+        
     } // end of main
 } // end of class SLL
