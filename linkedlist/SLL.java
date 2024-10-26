@@ -1,102 +1,175 @@
 import java.util.Scanner;
-import java.util.*;
-/*NODE TEMPLATE*/
-class Node 
-{
-	int data;
-	Node next;
-	/*Constructor*/
-	public Node (int d)
-	{
-		data = d;
-		next=null;
-	}
 
-}// end of node
+// 1. Node Class
+class Node {
+    int data; 
+    Node next;
 
+    public Node(int d) {
+        data = d; 
+        next = null;
+    }
+} // end of Node class
 
-/*LIST TEMPLATE*/
- class List 
-{
-	Node head;
-	Node tail;
+// 2. List Class
+class List {
+    Node head;
+    Node tail; 
+    int size;
 
-	/*constructor*/
-	public List()
-	{
-		head = null;	
-		tail = null;
-	}
-	/*Insert at the end of SLL*/
-	/*count the numbe rof nodes*/
-	/*Display the SLL*/
-	/*Search for a node*/
-	/*Delete a node*/
-}//end class list
-/*3. Interface */
-class SLL
-{
-	public static void main(String [] args)
+    // Constructor
+    public List() {
+        head = null; 
+        tail = null; 
+        size = 0;
+    }
 
-	{
-		Scanner scan = new Scanner(System.in);
+    // Return size of the list
+    public int getSize() {
+        return size;
+    }
 
-		// create object of list
-		List s = new List();
-	
-		char ch;
+    // Insert at the Tail
+    public void InsertTail(int val) {
+        Node newNode = new Node(val);
+        if (head == null) { // empty list
+            head = newNode; 
+            tail = newNode;
+        } else {
+            tail.next = newNode; 
+            tail = newNode;
+        }
+        size++; // Increment size
+    } // end of InsertTail
 
-		do 
-		{	
-			System.out.println("*SINGLE LINKED LIST*\n");	
+    // Insert at the Head
+    public void InsertStart(int val) {
+        Node newNode = new Node(val);
+        newNode.next = head; 
+        head = newNode;
+        if (tail == null) { // If the list was empty
+            tail = newNode;
+        }
+        size++; // Increment size
+    } // end of InsertStart
 
-			System.out.println("1. Insert at the end of the SLL");	
-			System.out.println("2. Count the number of nodes");	
-			System.out.println("3. Display the SLL");	
-			System.out.println("4. Search for a node");	
-			System.out.println("5. Delete a node");	
+    // Display the list
+    public void Display() {
+        Node tmp = head;
+        while (tmp != null) {
+            System.out.print(tmp.data + " -> ");
+            tmp = tmp.next;
+        }
+        System.out.println("null");
+    } // end of Display
 
-			System.out.println(" Enter your choice : ");	
-			int choice = scan.nextInt();
+    // Search Node
+    public void Search(int val) {
+        Node tmp = head; 
+        boolean found = false;
 
-				switch(choice)
-				{
-					case 1:
-						System.out.println("IN option 1");			
-						break;
-					case 2:
-						System.out.println("IN option 2");			
-						break;
-					case 3:
-						System.out.println("IN option 3");			
-						break;
-					case 4:
-						System.out.println("IN option 4");			
-						break;
-					case 5:
-						System.out.println("IN option 5");			
-						break;
+        while (tmp != null) {
+            if (tmp.data == val) {
+                found = true; 
+                break;
+            }
+            tmp = tmp.next;
+        }
 
-					default:
-						System.out.println("Incorrect option!");
-				}//end of switch
+        if (found) {
+            System.out.println(val + " is Found");
+        } else {
+            System.out.println(val + " is not Found");
+        }
+    } // end of Search
 
-				System.out.println("Do you want to continue (Type y or n) : ");
-				ch = scan.next().charAt(0);
+    // Deletion of node
+    public void Del(int val) {
+        Node tmp = head;
+        Node prev = null; 
 
+        while (tmp != null) {
+            if (tmp.data == val) {
+                break; // Node found
+            }
+            prev = tmp; 
+            tmp = tmp.next;
+        }
 
+        // If node not found
+        if (tmp == null) {
+            System.out.println("Value not found");
+            return;
+        }
 
+        // Deleting node
+        if (tmp == head) { // Head node deletion
+            head = head.next;
+            if (head == null) { // If the list is now empty
+                tail = null;
+            }
+        } else if (tmp == tail) { // Tail node deletion
+            tail = prev;
+            tail.next = null;
+        } else { // Any other node deletion
+            prev.next = tmp.next;
+        }
+        size--; // Decrement size
+    } // end of Del
+} // end of List class
 
+// 3. Interface class SLL
+public class SLL {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        List s = new List();
+        char ch;
 
+        do {
+            System.out.println("*** Singly Linked List ***");
+            System.out.println("1. Insert at the end of the list");
+            System.out.println("2. Size of the list");
+            System.out.println("3. Display the list");
+            System.out.println("4. Search in the list");
+            System.out.println("5. Insert at the Start of the list");
+            System.out.println("6. Deletion of Node");
+            System.out.print("Enter your choice: ");
+            int choice = scan.nextInt();
 
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter a value at end: ");
+                    s.InsertTail(scan.nextInt());
+                    break;
+                case 2:
+                    System.out.println("Size: " + s.getSize() + "\n");
+                    break;
+                case 3:
+                    System.out.print("SLL contains: ");
+                    s.Display();
+                    break;
+                case 4:
+                    System.out.print("Value to Search: ");
+                    s.Search(scan.nextInt());
+                    break;
+                case 5:
+                    System.out.print("Enter a value to insert at start: ");
+                    s.InsertStart(scan.nextInt());
+                    s.Display();
+                    break;
+                case 6:
+                    System.out.print("Enter a value for deletion: ");
+                    s.Del(scan.nextInt());
+                    s.Display();
+                    break;
+                default:
+                    System.out.println("Incorrect Choice");
+            } // end of switch
 
-
-
-
-
-			
-
-
-		}while(ch=='y' || ch=='Y'); //end of do while loop
-	}//end of main		
-}//end of SLL
+            System.out.print("Do you want to continue? (Type: Y or N) ");
+            ch = scan.next().charAt(0);
+        } while (ch != 'n' && ch != 'N'); // end of do while
+        
+        scan.close(); // Close scanner to prevent resource leak
+    } // end of main
+} // end of class SLL
