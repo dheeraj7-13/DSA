@@ -1,5 +1,6 @@
 /* name : bhairav kedare
  * roll 1525
+ * objective : to perform actions on array
  */
 
  import java.util.*;
@@ -82,5 +83,5 @@ class AStack
             ch = scan.next().charAt(0);
         } while (ch != 'n' || ch != 'N');
 
-        scan.close();
+        // scan.close();
     }}
