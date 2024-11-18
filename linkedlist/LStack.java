@@ -40,7 +40,35 @@ class SList
     }
 
     //pop
+    public void pop ()  
+    {
+        SNode x = new  SNode(5);
+        if(tos == null) 
+        {
+                System.out.println("Stack underflow!!");
+        }
+        else 
+        {
+                System.out.println("Data Popped"+tos.data);
+                tos = tos.next;
+        }
+        //elseif   for single node check () tmp.next==null    then its a stack 
+    }
     //peek 
+    public void peek()  
+    {
+        SNode x = new  SNode(5);
+        if(tos == null) 
+        {
+                System.out.println("Stack underflow!!");
+        }
+        else 
+        {
+                System.out.println("Data peeped"+tos.data);
+     
+        }
+        //elseif   for single node check () tmp.next==null    then its a stack 
+    }
     //display
     public void display () 
     {
@@ -75,7 +103,7 @@ public class LStack
  
                  do
                  {
-                         System.out.println("\n *** Stack - Array Implementation *** \n");
+                         System.out.println("\n *** Stack - Linkedlist Implementation *** \n");
                          System.out.println("1.Push an element on the stack");
                          System.out.println("2.Pop an element from the stack");
                          System.out.println("3.Peek operation");
@@ -94,11 +122,11 @@ public class LStack
  
                                  case 2:
                                          System.out.println("Option 2");
-                                        //  s.Pop();
+                                         s.pop();
                                          break;
  
                                  case 3:
-                                        //  s.Peek();
+                                         s.peek();
                                          break;
  
                                  case 4:
