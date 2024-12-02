@@ -1,0 +1,32 @@
+public class PostEval 
+{
+    public static void main(String[] args) 
+    {
+        //sameple postfix expression 
+        String expr = "23*5+62";
+
+        int result = Evaluate(expr);
+        System.out.println("Result of postfix evaluation: "+result);
+
+            
+    }   
+    public static int Evaluate(String ex) 
+    {
+        //create a stack
+        int[] stack = new int [ex.length()];
+        int tos=-1;
+        
+        //loop through the postfix ex
+        for(i=0;i<ex.length();i++)
+        {
+            char ch = ex.charAt(i);
+            if(Character.isDigit(ch))  //if ch is a digit - push 
+            {
+                tos++;
+                stack[tos] = ch='0'; //convert char to int
+
+            }
+            else if (ch=='+'||ch=='-')
+        }
+    }
+}
