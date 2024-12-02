@@ -1,9 +1,3 @@
-/*	Name:Vaibhav Katkar
-	Roll No:1524
-	Unit 3:Stacks & Queues
-	Program:Double Ended Queues
-*/
-
 import java.util.*;
 
 /* Node Template*/
@@ -46,6 +40,7 @@ class DQue {
             front.left = x;
             front = x;
         }
+        Display();
 
     }// end of Enqueue Front
 
@@ -63,6 +58,7 @@ class DQue {
             rear.right = x;
             rear = x;
         }
+        Display();
     }// end of EnqueueRear
 
     // DequeueRear
@@ -80,6 +76,7 @@ class DQue {
                 rear.right = null;
             }
         }
+        Display();
 
     }
 
@@ -97,17 +94,20 @@ class DQue {
                 front = front.right;
                 front.left = null;
             }
+
         }
+        Display();
     }
 
     // PeekFront
-    public void peekFront() {
+    public void PeekFront() {
         if (front == null) {
             System.out.println("Queue Underflow");
         } else {
             DQNode tmp = front;
             System.out.println("Queue  Contain : ");
             System.out.print(tmp.data + " | ");
+                Display();
         }
     }
 
@@ -119,6 +119,7 @@ class DQue {
             DQNode tmp = rear;
             System.out.println("Queue  Contain : ");
             System.out.print(tmp.data + " | ");
+                Display();
         }
     }
 
@@ -172,11 +173,11 @@ class DQueue {
                     break;
 
                 case 3:
-                    d.DequeuFront();
+                    d.DequeueFront();
                     break;
 
                 case 4:
-                    d.DequeuRear();
+                    d.DequeueRear();
                     break;
 
                 case 5:
