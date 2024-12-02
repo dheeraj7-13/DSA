@@ -17,7 +17,7 @@ public class PostEval
         int tos=-1;
         
         //loop through the postfix ex
-        for(i=0;i<ex.length();i++)
+        for(int i=0;i<ex.length();i++)
         {
             char ch = ex.charAt(i);
             if(Character.isDigit(ch))  //if ch is a digit - push 
@@ -26,7 +26,36 @@ public class PostEval
                 stack[tos] = ch='0'; //convert char to int
 
             }
-            else if (ch=='+'||ch=='-')
-        }
-    }
-}
+            else if (ch=='+'||ch=='-' || ch== '*' || ch== '/') //if ch is operator 
+            {
+                int op2 = stack[tos--]; //pop the 2nd operand
+                int op1 = stack[tos--]; //pop the 2nd operand
+
+                int res=0;
+                switch(ch)
+                {
+                    case '+':
+                        res = op1 + op2;
+                        break;
+                    case '-':
+                        res = op1 - op2;
+                        break;
+                    case '*':
+                        res = op1 * op2;
+                        break;
+                    case '/':
+                        res = op1 + op2;
+                        break;
+
+
+
+                }
+                //push the result back on the stack 
+                tos++;
+                stack[tos] = res;
+
+            }
+        } // end of forl
+        return stack[tos];
+    }//end of evalutate 
+}//end of PostEval
