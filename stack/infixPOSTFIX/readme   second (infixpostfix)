@@ -1,0 +1,25 @@
+
+infix to postfix conversion 
+step 1: scan the infix expression from left to right.
+2.if the scan character is operand  ,then  print it 
+step 3: if the scan character is operator , then 
+3a .  if the precedence of the scanned operator is greater than the precedence of the scanned operator in the stack(or the stack is empty | or the stack has open bracket '('  ) will push the character onto stack.
+ 3b .  Pop all the characters off the stack which are greater than or equal to '>='  in precedence than that of the scanned operator. 			also   		Push the scanned operator to the stack
+4.If the scanned character is an open bracked '('  push it on the stack 
+5. If the scanned character is a closed bracket ')'     pop the stack until an open bracket is encountered and discard all the parenthesis
+6. Repeat 2 to 5  until the entire infix expression is scanned followed by printing the output.
+
+
+
+----------------------------------------------------------------------------------------------------
+step1  postfix A
+step2 push (+)
+step3 postfix: AB
+step4 push(A)
+step5 postfix : -ABC
+step6 pop()      coz .... *> +       precedence
+step7 pop()      coz..... + = +      equal precedence
+
+SOLVE:
+infix:   (A+B)*(C/D)      
+postfix: (  (AB+)(CD/)*   )    operand first ..... followed by operator 
