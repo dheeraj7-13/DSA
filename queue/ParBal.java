@@ -1,8 +1,4 @@
-/* 
-	Name: Vaibhav Katkar
-	Roll No: 1524
-	Unit 3: Stacks and Queue
-	Program: Parenthesis Balancing - Stack Application
+/*	Program: Parenthesis Balancing - Stack Application
 */
 
 public class ParBal {
